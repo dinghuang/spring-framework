@@ -42,6 +42,7 @@ public class AnnotationConfigBeanDefinitionParser implements BeanDefinitionParse
 	@Override
 	@Nullable
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
+		//todo 解析注解注入的元素
 		Object source = parserContext.extractSource(element);
 
 		// Obtain bean definitions for all relevant BeanPostProcessors.

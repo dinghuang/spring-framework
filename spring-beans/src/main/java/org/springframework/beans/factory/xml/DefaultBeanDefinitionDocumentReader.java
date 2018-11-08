@@ -145,8 +145,10 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 			}
 		}
 
+		//todo 解析前处理，子类实现
 		preProcessXml(root);
 		parseBeanDefinitions(root, this.delegate);
+		//todo 解析后处理，子类实现
 		postProcessXml(root);
 
 		this.delegate = parent;
@@ -187,10 +189,12 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	}
 
 	private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
+		//todo 对不同标签的xml做不同处理
 		if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {
 			importBeanDefinitionResource(ele);
 		}
 		else if (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {
+			//四种里面最复杂的
 			processAliasRegistration(ele);
 		}
 		else if (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {
